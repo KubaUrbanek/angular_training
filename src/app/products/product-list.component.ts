@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
   private _filterText: string = '';
+  filteredProducts: Product[] = [];
   products: Product[] = [
     {
       "productId": 1,
@@ -74,10 +75,16 @@ export class ProductListComponent implements OnInit {
 
   set filterText(value: string){
     this._filterText = value;
+    this.filteredProducts = this.performFilter(value);
     console.log("Set filter by setter");
   }
 
   ngOnInit(): void {
     this.filterText = 'cart';
+  }
+
+  performFilter(productName: string) : Product[]{
+    productName = productName.toLowerCase();
+    return this.products.filter(product => product.productName.toLowerCase() === productName);
   }
 }
