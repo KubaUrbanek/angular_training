@@ -85,6 +85,6 @@ export class ProductListComponent implements OnInit {
 
   performFilter(productName: string) : Product[]{
     productName = productName.toLowerCase();
-    return this.products.filter(product => product.productName.toLowerCase() === productName);
+    return this.products.filter(product => product.productName.toLowerCase().includes(productName));
   }
 }
