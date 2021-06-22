@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
   private _filterText: string = '';
+  private _titleCore = "Product list ";
   filteredProducts: Product[] = [];
   products: Product[] = [
     {
@@ -86,5 +87,9 @@ export class ProductListComponent implements OnInit {
   performFilter(productName: string) : Product[]{
     productName = productName.toLowerCase();
     return this.products.filter(product => product.productName.toLowerCase().includes(productName));
+  }
+
+  onNotify(message: string) {
+    this.pageTitle = this._titleCore + message;
   }
 }
